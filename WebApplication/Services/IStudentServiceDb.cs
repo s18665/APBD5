@@ -1,4 +1,5 @@
-﻿using WebApplication.Models;
+﻿using System;
+using WebApplication.Models;
 
 namespace WebApplication.Services
 {
@@ -6,5 +7,6 @@ namespace WebApplication.Services
     {
         EnrollStudentResponse EnrollStudent(EnrollStudentRequest request);
         PromoteStudentsResponse PromoteStudents(PromoteStudentsRequest request);
+        bool CheckIndex(String index);
     }
 }

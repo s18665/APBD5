@@ -111,5 +111,26 @@ namespace WebApplication.Services
             }
             return null;
         }
+
+        public bool CheckIndex(string index)
+        {
+            using (SqlConnection connection = new SqlConnection("ConnectionString"))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand("SELECT COUNT(1) AS Counter FROM Student WHERE IndexNumber=@index", connection);
+                command.Parameters.AddWithValue("index", index);
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        if (reader["Counter"].ToString() == "1")
+                        {
+                            return true;
+                        }
+                    }
+                }
+                return false;
+            }
+        }
     }
 }
